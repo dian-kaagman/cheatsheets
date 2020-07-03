@@ -16,7 +16,8 @@
       var app = new Vue({
           el: '#app',
           data: {
-              collection: []
+              collection: [],
+              sortAsc: true
           },
           methods: {
           },
