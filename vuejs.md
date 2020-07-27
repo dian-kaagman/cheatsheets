@@ -42,6 +42,13 @@
       })
       </script>
       
+## Scripts
+
+### Go back to last page
+goBack() {
+      window.history.length > 1 ? this.$router.go(-1) : this.$router.push('/')
+}
+      
 ## Tools
 
 ### Local storage
