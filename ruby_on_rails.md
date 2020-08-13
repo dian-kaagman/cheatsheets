@@ -12,7 +12,28 @@
                 end
             end
        end
+       
+       # Error handling example in controller
+       def update
+           errors=[]
+            begin 
+                @instance.update(batch_params)
+                errors += @instance.errors.to_a
+            rescue Exception, StandardError => error
+                errors.push(error)
+                errors.push(*@instance.errors.full_messages) if @instance
+            end
+
+            errors.compact!
+            if errors.empty?     
+                render json: {data: @instance.to_json, status: 'ok'}
+            else
+                render json: {errors: errors, status: 'error'}
+            end
+       end
     end
+    
+    
 
 ## Routes example    
     Rails.application.routes.draw do
